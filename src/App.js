@@ -24,9 +24,34 @@ function App() {
     getPostsData();
   }, []);
 
+  const [sortState, setSortState] = useState('none');
+  const sortMethods = {
+    none: { method: (a, b) => null },
+    ascending: { method: undefined },
+    descending: { method: (a, b) => (a > b ? -1 : 1) },
+  };
+  const handleSort = (e) => {
+    setSortState(e.target.value);
+    let sortedPost = post.sort();
+    setPost(sortedPost);
+  };
+
   return (
     <div className="App">
       <Header />
+      <div>
+        <select
+          className="select"
+          defaultValue={'DEFAULT'}
+          onChange={(e) => handleSort(e)}
+        >
+          <option value="DEFAULT" disabled>
+            None
+          </option>
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+      </div>
       <div className="card-container">
         {post.map((item) => (
           <Card id={item.id} title={item.title} body={item.body} />
