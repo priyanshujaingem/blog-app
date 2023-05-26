@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header setPost={setPost} post={post} />
       <div className="card-container">
         {post.map((item) => (
           <Card id={item.id} title={item.title} body={item.body} />
