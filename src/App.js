@@ -25,15 +25,14 @@ function App() {
   }, []);
 
   const [sortState, setSortState] = useState('none');
-  const sortMethods = {
-    none: { method: (a, b) => null },
-    ascending: { method: undefined },
-    descending: { method: (a, b) => (a > b ? -1 : 1) },
-  };
   const handleSort = (e) => {
     setSortState(e.target.value);
-    let sortedPost = post.sort();
-    setPost(sortedPost);
+    let myPost =post.sort((a, b) => {
+      if (a['title'] < b['title']) return sortState === 'descending' ? -1 : 1;
+      if (a['title'] > b['title']) return sortState === 'descending' ? 1 : -1;
+      return 0;
+    });
+    setPost(myPost);
   };
 
   return (
