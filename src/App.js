@@ -1,11 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect } from 'react';
 import { getPosts } from './services/api';
 import { useState } from 'react';
+import Card from './components/Card';
 
 function App() {
   const [post, setPost] = useState([]);
+  let title = 'Card Title';
+  let cardBody =
+    ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod nulla eveniet nihil officiis fugiat nisi impedit debitis necessitatibus!';
   const getPostsData = async () => {
     let postData = await getPosts();
     if (postData?.data?.length > 0) {
@@ -18,20 +21,14 @@ function App() {
   },[]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="card-container">
+        <Card title={title} body={cardBody} />
+        <Card title={title} body={cardBody} />
+        <Card title={title} body={cardBody} />
+        <Card title={title} body={cardBody} />
+        <Card title={title} body={cardBody} />
+      </div>
+      <button className="read-more">Read More</button>
     </div>
   );
 }
