@@ -9,8 +9,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 10rem;
-  width: 20rem;
+  height: auto;
+  width: 90%;
   background-color: #2b3618;
   color: white;
   text-align: left;
@@ -19,6 +19,4 @@
 }
 .title {
   cursor: pointer;
-}
-.cardBody {
 }
