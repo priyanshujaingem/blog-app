@@ -7,14 +7,19 @@ import Header from './components/Header';
 
 function App() {
   const [post, setPost] = useState([]);
+  const [resArr, setResArr] = useState([]);
 
   const getPostsData = async () => {
     let postData = await getPosts();
     if (postData?.data?.length > 0) {
-      setPost(postData?.data);
+      setResArr(postData?.data);
+      setPost(postData?.data.slice(0, 5));
     }
   };
 
+  const readMore = () => {
+    setPost(resArr.slice(0, post.length + 5));
+  };
   useEffect(() => {
     getPostsData();
   }, []);
@@ -27,7 +32,9 @@ function App() {
           <Card id={item.id} title={item.title} body={item.body} />
         ))}
       </div>
-      <button className="read-more">Read More</button>
+      <button onClick={readMore} className="read-more">
+        Read More
+      </button>
     </div>
   );
 }
