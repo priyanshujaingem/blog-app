@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './header.module.css';
+import { getPosts } from '../../services/api';
 
 function Header({ setPost, post }) {
   const [selectedValue, setSelectedValue] = useState('title');
   const [searchText, setSearchText] = useState('');
-  const filterPost = () => {
+  const filterPost = async () => {
     let finalPost = post.filter((item) => {
-      if (selectedValue === 'title') {
+      if (selectedValue === 'title' && searchText) {
         return item?.title?.toLowerCase()?.includes(searchText?.toLowerCase());
-      } else if (selectedValue === 'body') {
+      } else if (selectedValue === 'body' && searchText) {
         return item?.body?.toLowerCase()?.includes(searchText?.toLowerCase());
       }
+      return [];
     });
     setPost(finalPost);
-    console.log("my post", finalPost);
+    if (!searchText) {
+        let postData = await getPosts();
+        if (postData?.data?.length > 0) {
+          setPost(postData?.data.slice(0, 5));
+        }
+    }
   }
 
   const handleSelect = (e) => {
@@ -23,10 +30,6 @@ function Header({ setPost, post }) {
   const handleInput = (e) => {
     setSearchText(e.target.value);
   }
-  // useEffect(() => {
-  //   console.log("my select", selectedValue);
-
-  // }, [selectedValue])
   return (
     <div className={styles.searchContainer}>
       <div className={styles.searchBy}>
