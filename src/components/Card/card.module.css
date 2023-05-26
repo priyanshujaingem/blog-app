@@ -17,3 +17,8 @@
   border-radius: 1rem;
   gap: 1rem;
 }
+.title {
+  cursor: pointer;
+}
+.cardBody {
+}

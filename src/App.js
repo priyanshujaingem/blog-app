@@ -8,11 +8,11 @@ function App() {
   return (
     <div className="App">
       <div className="card-container">
-        <Card title={title} body={cardBody} />
-        <Card title={title} body={cardBody} />
-        <Card title={title} body={cardBody} />
-        <Card title={title} body={cardBody} />
-        <Card title={title} body={cardBody} />
+        <Card id="1" title={title} body={cardBody} />
+        <Card id="2" title={title} body={cardBody} />
+        <Card id="3" title={title} body={cardBody} />
+        <Card id="4" title={title} body={cardBody} />
+        <Card id="5" title={title} body={cardBody} />
       </div>
       <button className="read-more">Read More</button>
     </div>
