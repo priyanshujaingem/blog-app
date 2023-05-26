@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header setPost={setPost} post={post} />
       <div>
         <select
           className="select"
