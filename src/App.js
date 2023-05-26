@@ -53,7 +53,7 @@ function App() {
       </div>
       <div className="card-container">
         {post.map((item) => (
-          <Card id={item.id} title={item.title} body={item.body} />
+          <Card key={item.id} id={item.id} title={item.title} body={item.body} />
         ))}
       </div>
       <button onClick={readMore} className="read-more">
