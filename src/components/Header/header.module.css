@@ -2,6 +2,9 @@
   width: 100%;
   background-color: lightgray;
   padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .searchInp {
   /* width: 100%; */
@@ -11,4 +14,31 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.searchBy {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.searchBtn {
+  padding: 12px 20px;
+  margin-left: 10px;
+  background-color: #2b3618;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.select {
+  padding: 12px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
 }
