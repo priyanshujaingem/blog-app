@@ -13,11 +13,7 @@ function Card({ title, body, id }) {
       >
         {title}
       </h1>
-      {isActive && (
-        <p id={`body${id}`} className={styles.cardBody}>
-          {body}
-        </p>
-      )}
+      {isActive && <p id={`body${id}`}>{body}</p>}
     </div>
   );
 }
